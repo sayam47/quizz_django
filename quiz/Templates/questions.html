@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<title>Questions</title>
+{% endblock %}
+
+{% block content %}
+<div class="main">
+    <div class="inactive-form" id="signup-container">
+        <h2 class="title">Questions</h2>
+		<form  class="signin-form" method="post" , action = "{% url 'questions' %}">
+		{% csrf_token %}
+		{% for obj in qna %}
+		    <div class="card past">
+		            <div class="content">
+		                <p>{{ obj.q }}</p>
+		                <input class = 'option' type="radio" id="{{ obj.c1 }}_{{ forloop.counter0 }}" name="selected_{{ forloop.counter0 }}" value="{{ obj.c1 }}" checked>
+		                <label for="{{ obj.c1 }}_{{ forloop.counter0 }}">{{ obj.c1 }}</label>
+		                <input class = 'option' type="radio" id="{{ obj.c2 }}_{{ forloop.counter0 }}" name="selected_{{ forloop.counter0 }}" value="{{ obj.c2 }}" >
+		                <label for="{{ obj.c2 }}_{{ forloop.counter0 }}">{{ obj.c2 }}</label>
+		                <input class = 'option' type="radio" id="{{ obj.c3 }}_{{ forloop.counter0 }}" name="selected_{{ forloop.counter0 }}" value="{{ obj.c3 }}" >
+		                <label for="{{ obj.c3 }}_{{ forloop.counter0 }}">{{ obj.c3 }}</label>
+		                <input class = 'option' type="radio" id="{{ obj.c4 }}_{{ forloop.counter0 }}" name="selected_{{ forloop.counter0 }}" value="{{ obj.c4 }}" >
+		                <label for="{{ obj.c4 }}_{{ forloop.counter0 }}">{{ obj.c4 }}</label>
+		                <input class = 'option' type="hidden" id="{{ obj.c }}_{{ forloop.counter0 }}" name="correct_{{ forloop.counter0 }}" value="{{ obj.c }}" >
+		            </div>
+		        </div>
+			<br>
+		{% endfor %}
+		<button type="submit">Submit</button>
+		</form>
+	</div>
+</div>
+
+
+{% endblock %}

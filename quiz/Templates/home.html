@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<title>Home</title>
+{% endblock %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		<h3>Hi {{ user.username }}!</h3>
+		<h3><a  href="{% url 'questions' %}">Start Quiz</a></h3>
+		<h3><a  href="{% url 'leaderboard' %}">Leaderboard</a></h3>
+	{% else %}
+		<h3><a  href="{% url 'login' %}">Log In</a></h3>
+		<h3><a  href="{% url 'signup' %}">Sign Up</a></h3>
+	{% endif %}
+{% endblock %}

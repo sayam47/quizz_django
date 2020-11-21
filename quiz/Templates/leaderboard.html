@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<title>Leaderboard</title>
+{% endblock %}
+
+{% block content %}
+<div class="main">
+<h2>Leaderboard</h2><br>
+{% for obj in scores %}
+    <div class="card past">
+            <div class="content">
+                <h3>{{ obj.user.username }}</h3>
+                <p>Score : {{ obj.score }}</p>
+            </div>
+        </div>
+    <br>              
+{% endfor %}
+</div>
+<p>Go <a href = "{% url 'home' %}">Home</a></p>
+
+{% endblock %}

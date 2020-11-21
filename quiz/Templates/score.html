@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<title>Score</title>
+{% endblock %}
+
+{% block content %}
+		<h3>Thanks {{ user.username }}!</h3>
+		<h3>Your score was {{ score }}</h3>
+		<p>Check Leaderboard <a href = "{% url 'leaderboard' %}">here</a></p>
+		<p>Go <a href = "{% url 'home' %}">Home</a></p>
+{% endblock %}
